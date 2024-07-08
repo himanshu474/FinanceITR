@@ -149,57 +149,150 @@ const PersonalInformationForm: React.FC<{ onNext: () => void }> = () => {
 
 
 const HousingForm: React.FC<{ onNext: () => void }> = () => {
-  return (
+
+    const [liveInRentedHouse, setLiveInRentedHouse] = useState<string>(''); 
+
+    const handleRentedHouseChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setLiveInRentedHouse(event.target.value);
+    };
+   
+
+    return(
     <form>
-       <div className="mb-14 flex">
-        <div className="flex- mr-2">
-          <label className="block text-sm font-medium text-gray-700">Field 3</label>
-          <input type="text" className="border border-gray-300 rounded-md px-3 py-2 mt-1 w-full" />
-        </div>
-        <div className="flex-1 ml-2">
-          <label className="block text-sm font-medium text-gray-700">Field 4</label>
-          <input type="text" className="border border-gray-300 rounded-md px-3 py-2 mt-1 w-full" />
-        </div>
-      </div>
-      <div className="flex">
-        <div className="flex-1 mr-2">
-          <label className="block text-sm font-medium text-gray-700">Field 3</label>
-          <input type="text" className="border border-gray-300 rounded-md px-3 py-2 mt-1 w-full" />
-        </div>
-        <div className="flex-1 ml-2">
-          <label className="block text-sm font-medium text-gray-700">Field 4</label>
-          <input type="text" className="border border-gray-300 rounded-md px-3 py-2 mt-1 w-full" />
-        </div>
-      </div>
-    </form>
+    <div className="mb-14 flex">
+         <div className="flex-1 mr-2">
+           <label className="block text-sm font-medium text-gray-700 ">Do you live in a rented house?</label>
+           <div className="mt-1">
+             <label className="inline-flex items-center">
+               <input
+                 type="radio"
+                 className="form-radio h-4 w-4 text-indigo-600"
+                 name="rentedHouse"
+                 value="yes"
+                 onChange={handleRentedHouseChange}
+               />
+               <span className="ml-2">Yes</span>
+             </label>
+             <label className="inline-flex items-center ml-6">
+               <input
+                 type="radio"
+                 className="form-radio h-4 w-4 text-indigo-600"
+                 name="rentedHouse"
+                 value="no"
+                 onChange={handleRentedHouseChange}
+               />
+               <span className="ml-2">No</span>
+             </label>
+           </div>
+         </div>
+         <div className="flex-1 ml-2">
+           <label className="block text-sm font-medium text-gray-700">Do you live in a Metro city?</label>
+           <div className="mt-1">
+             <label className="inline-flex items-center">
+               <input type="radio" className="form-radio h-4 w-4 text-indigo-600" name="metroCity" value="yes" />
+               <span className="ml-2">Yes</span>
+             </label>
+             <label className="inline-flex items-center ml-6">
+               <input type="radio" className="form-radio h-4 w-4 text-indigo-600" name="metroCity" value="no" />
+               <span className="ml-2">No</span>
+             </label>
+           </div>
+           <p className="text-sm text-gray-500 mt-2">Note: Only Mumbai, Delhi, Chennai, Kolkata are considered as metro cities.</p>
+         </div>
+       </div>
+ 
+ {liveInRentedHouse ==="yes" &&(
+
+
+       <div className="flex mb-6">
+         <div className="flex-1 mr-2">
+           <label className="block text-sm font-medium text-gray-700">Rent paid (per month)</label>
+           <input
+             type="text"
+             className="border border-gray-300 rounded-md px-3 py-2 mt-1 w-96"
+             
+           />
+         </div>
+       </div>
+ ) }
+ </form>  
   );
 };
+
+
+
 const IncomeConfigurationForm: React.FC<{ onNext: () => void }> = () => {
-  return (
-    <form>
-       <div className="mb-14 flex">
-        <div className="flex-1 mr-2">
-          <label className="block text-sm font-medium text-gray-700">Field 3</label>
-          <input type="text" className="border border-gray-300 rounded-md px-3 py-2 mt-1 w-full" />
+  // const [liveInRentedHouse, setLiveInRentedHouse] = useState<string>(''); 
+
+  //   const handleRentedHouseChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //     setLiveInRentedHouse(event.target.value);
+  //   };
+   
+   
+    return (
+      <form>
+     <div className="mb-14 flex">
+          <div className="flex-1 mr-2">
+            <label className=" text-sm font-medium text-gray-700 ">PF Configuration</label>
+            <div className="mt-4 ">
+              <label className="items-center">
+                <input
+                  type="radio"
+                  className="form-radio h-4 w-4 text-indigo-600"
+                  name="rentedHouse"
+                  value="salary"
+                />
+                <span className="ml-2">12% of Basic</span>
+              </label>
+              <label className="flex items-center ml-0 mt-4">
+                <input
+                  type="radio"
+                  className="form-radio h-4 w-4 text-indigo-600"
+                  name="rentedHouse"
+                  value="1800 Inr"
+                />
+                <span className="ml-2">1800 INR</span>
+              </label>
+              <label className="flex items-center ml-0 mt-4">
+                <input
+                  type="radio"
+                  className="form-radio h-4 w-4 text-indigo-600"
+                  name="rentedHouse"
+                  value="No PF"
+                />
+                <span className="ml-2">No PF</span>
+              </label>
+            </div>
+          </div>
+          
+          <div className="  mb-6 pr-12 w-98">
+          <div className="mr-10">
+            <label className="block text-sm font-medium text-gray-700">Provident Fund (PF)</label>
+            <input
+              type="text"
+              className="border border-gray-300 rounded-md px-3 py-2 mt-1 w-96"
+              disabled={true}
+            />
+          </div>
+            </div>            
         </div>
-        <div className="flex-1 ml-2">
-          <label className="block text-sm font-medium text-gray-700">Field 4</label>
-          <input type="text" className="border border-gray-300 rounded-md px-3 py-2 mt-1 w-full" />
+  
+        <div className="flex mb-6 ">
+          <div className="mr-2">
+            <label className="block text-sm font-medium text-gray-700">Professional Tax (per month)</label>
+            <input
+              type="text"
+              className="w-96 border border-gray-300 rounded-md px-3 py-2 mt-1"
+            />
+          </div>
         </div>
-      </div>
-      <div className="flex">
-        <div className="flex-1 mr-2">
-          <label className="block text-sm font-medium text-gray-700">Field 3</label>
-          <input type="text" className="border border-gray-300 rounded-md px-3 py-2 mt-1 w-full" />
-        </div>
-        <div className="flex-1 ml-2">
-          <label className="block text-sm font-medium text-gray-700">Field 4</label>
-          <input type="text" className="border border-gray-300 rounded-md px-3 py-2 mt-1 w-full" />
-        </div>
-      </div>
-    </form>
+  </form>
   );
 };
+
+
+
+
 const AllowancesForm: React.FC<{ onNext: () => void }> = () => {
   return (
     <form>
