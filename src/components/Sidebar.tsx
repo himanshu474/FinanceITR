@@ -161,7 +161,7 @@ const HousingForm: React.FC<{ onNext: () => void }> = () => {
     <form>
     <div className="mb-14 flex">
          <div className="flex-1 mr-2">
-           <label className="block text-sm font-medium text-gray-700 ">Do you live in a rented house?</label>
+           <label className="block text-sm font-medium text-gray-700 required">Do you live in a rented house?</label>
            <div className="mt-1">
              <label className="inline-flex items-center">
                <input
